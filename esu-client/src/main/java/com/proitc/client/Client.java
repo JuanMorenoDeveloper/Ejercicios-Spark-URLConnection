@@ -48,6 +48,7 @@ public class Client {
 				url = new URL(urlServer + args);
 			}
 			HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+			httpURLConnection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
 			httpURLConnection.setRequestMethod(GET);
 			BufferedReader in = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
 			while (Objects.nonNull(inputLine = in.readLine())) {
@@ -75,7 +76,7 @@ public class Client {
 			httpURLConnection.setDoOutput(true);
 			httpURLConnection.setRequestMethod(POST);
 			httpURLConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-			httpURLConnection.setRequestProperty("charset", "utf-8");
+			httpURLConnection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
 			OutputStreamWriter out = new OutputStreamWriter(httpURLConnection.getOutputStream());
 			out.write("persona=" + args);
 			out.close();
